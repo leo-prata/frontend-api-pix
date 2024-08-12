@@ -1,19 +1,60 @@
-body, html {
-    height: 100%;
+body {
+    background-color: #D8BFD8; /* Lilás claro */
     margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #3f3f3f;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    min-width: 450px; 
+    background-color: #ffffff; /* Fundo branco para a coluna central */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra sutil */
+    padding: 14px;
+    box-sizing: border-box;
+    overflow-y: auto; /* Permite rolar o conteúdo verticalmente */
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
 }
 
 .card {
-    width: 500px;
-    height: 500px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    border: 1px solid #000;
-    border-radius: 8px;
-    background-color: #fff;
+}
+
+.title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.qrCodeContainer {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.qrCodeImage {
+    width: 200px;
+    height: 200px;
+}
+
+.texto{
+    max-width: 300px;
+}
+
+button{
+    align-self: center;
 }
