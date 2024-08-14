@@ -1,0 +1,52 @@
+.jogosContainer {
+    max-height: 300px; // Altura máxima
+    overflow-y: auto;  // Habilita o scroll vertical se necessário
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: 100%;
+    min-width: 450px;
+    scroll-behavior: smooth; // Adiciona rolagem suave
+    scroll-snap-type: y proximity;
+
+    // Estilizando a barra de rolagem
+    &::-webkit-scrollbar {
+        width: 5px; // Largura da barra de rolagem  
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #070707; // Cor do "polegar" da barra de rolagem
+        border-radius: 4px; // Bordas arredondadas
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: #555; // Cor do "polegar" ao passar o mouse
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: #8a8a8a; // Cor do trilho da barra de rolagem
+    }
+}
+
+.jogo {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #d4d4d4;
+    border-radius: 1px;
+    scroll-snap-align: start;
+    text-decoration: none;
+    color: inherit;
+}
+
+.jogo:hover {
+    background-color: #c4c4c4;
+}
+
+.nome {
+    font-weight: bold;
+}
+
+.data {
+    color: #353535;
+}
