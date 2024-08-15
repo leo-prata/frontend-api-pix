@@ -9,6 +9,7 @@ const Jogos = () => {
         id: string;
         nome: string;
         data: string;
+        estaPago: boolean;
     }
     
     const [jogos, setJogos] = useState<Jogo[]>([]);
@@ -41,14 +42,33 @@ const Jogos = () => {
     }, []);
 
     return (
+        /*
         <div className={styles.jogosContainer}>
-            {jogos.map((jogo) => (
-                <Link key={jogo.id} to={`/jogo/${jogo.id}`} className={styles.jogo}>
+        {jogos.map((jogo) => (
+            <Link key={jogo.id} to={`/jogo/${jogo.id}`} className={styles.jogo}>
+                <div 
+                    className={`${styles.statusIndicator} ${jogo.estaPago ? styles.pago : styles.pendente}`}
+                />
+                <div className={styles.jogoInfo}>
                     <p className={styles.nome}>{jogo.nome}</p>
                     <p className={styles.data}>{jogo.data}</p>
-                </Link>
-            ))}
-        </div>
+                </div>
+            </Link>
+        ))}
+    </div>
+    */
+
+    <div className={styles.jogosContainer}>
+    {jogos.map((jogo) => (
+        <Link key={jogo.id} to={`/jogo/${jogo.id}`} className={styles.jogo}>
+            <div className={styles.left}>
+            <div className={jogo.estaPago ? styles.pago : styles.pendente}></div>
+            <p className={styles.nome}>{jogo.nome}</p>
+            </div>
+            <p className={styles.data}>{jogo.data}</p>
+        </Link>
+    ))}
+</div>
     );
 };
 

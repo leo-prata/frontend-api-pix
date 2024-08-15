@@ -8,11 +8,15 @@ import { toast } from "react-toastify";
 
 import { setUpAPI } from '../../services/api';
 
+import { db } from '../../services/firebase';
+import { doc, updateDoc } from 'firebase/firestore';
+
 interface TicketPixProps {
     valor: number;
+    jogoId: string;
 }
 
-const TicketPix: React.FC<TicketPixProps> = ({valor}) => {
+const TicketPix: React.FC<TicketPixProps> = ({valor, jogoId}) => {
     const [email, setEmail] = useState('');
     const [cpf, setCpf] = useState('');
 
@@ -36,6 +40,11 @@ const TicketPix: React.FC<TicketPixProps> = ({valor}) => {
                         setPaymentStatus('approved');
                         clearInterval(interval);
                         console.log('Pagamento aprovado!');
+
+                        const jogoRef = doc(db, "jogos", jogoId);
+                        await updateDoc(jogoRef, {
+                            estaPago: true
+                        });
                     }
                 } catch (error) {
                     console.error('Erro ao obter status do pagamento:', error);
@@ -49,7 +58,7 @@ const TicketPix: React.FC<TicketPixProps> = ({valor}) => {
                 console.log('Intervalo limpo');
             }
         };
-    }, [paymentId]);
+    }, [paymentId, jogoId]);
 
     async function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
@@ -85,8 +94,20 @@ const TicketPix: React.FC<TicketPixProps> = ({valor}) => {
         console.log('Pagamento iniciado com ID:', paymentId);
     }
 
+    const handleCopy = () => {
+        navigator.clipboard.writeText(codigoPix)
+            .then(() => {
+                toast.success('Código copiado para a área de transferência!');
+            })
+            .catch(err => {
+                console.error('Erro ao copiar o código:', err);
+                toast.error('Erro ao copiar o código.');
+            });
+    };
+
     return (
         <div className={styles.container}>
+        {paymentStatus !== 'approved' && (
             <div className={styles.card}>
                 <h2 className={styles.title}>Pagamento via Pix</h2>
                 <form className={styles.form} onSubmit={handleSubmit}>
@@ -104,7 +125,7 @@ const TicketPix: React.FC<TicketPixProps> = ({valor}) => {
                     />
                     <Button type="submit">Pagar</Button>
                 </form>
-                {qrCodeBase64 && paymentStatus !== 'approved' && (
+                {qrCodeBase64 && (
                     <div className={styles.qrCodeContainer}>
                         <h3>Pague com o QRCode abaixo ou com o código:</h3>
                         <img 
@@ -112,17 +133,14 @@ const TicketPix: React.FC<TicketPixProps> = ({valor}) => {
                             alt="QR Code for Pix Payment" 
                             className={styles.qrCodeImage}
                         />
-                        <p className={styles.texto}>{codigoPix}</p>
+                        <div className={styles.texto}>{codigoPix}</div>
+                        <button className={styles.copyButton} onClick={handleCopy}>Copiar</button>
                         <p>Aguardando pagamento...</p>
                     </div>
                 )}
-                {paymentStatus === 'approved' && (
-                    <div className={styles.approvedMessage}>
-                        <h3>Pagamento aprovado! Obrigado.</h3>
-                    </div>
-                )}
             </div>
-        </div>
+        )}
+    </div>
     )
 }
 

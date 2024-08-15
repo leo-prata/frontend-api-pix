@@ -50,3 +50,20 @@
 .data {
     color: #353535;
 }
+
+
+.pago {
+    width: 15px;
+    height: 15px;
+    background-color: green;
+    margin-right: 5px;
+    border-radius: 40px;
+}
+
+.pendente {
+    width: 15px;
+    height: 15px;
+    background-color: orange;
+    margin-right: 5px;
+    border-radius: 40px;
+}

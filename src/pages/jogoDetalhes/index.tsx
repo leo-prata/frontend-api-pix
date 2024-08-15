@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, onSnapshot } from 'firebase/firestore';
 import { db } from '../../services/firebase';
 import styles from './styles.module.scss';
 import Header from '../../components/Header';
@@ -21,24 +21,21 @@ const JogoDetalhes = () => {
     const [jogo, setJogo] = useState<Jogo | null>(null);
 
     useEffect(() => {
-        const fetchJogo = async () => {
-            if (id) {
-                try {
-                    const jogoDoc = doc(db, 'jogos', id);
-                    const docSnap = await getDoc(jogoDoc);
+        if (id) {
+            const jogoDoc = doc(db, 'jogos', id);
 
-                    if (docSnap.exists()) {
-                        setJogo(docSnap.data() as Jogo);
-                    } else {
-                        console.error('Nenhum jogo encontrado com o ID:', id);
-                    }
-                } catch (error) {
-                    console.error('Erro ao buscar o jogo:', error);
+            // Ouve as mudanças em tempo real no documento
+            const unsubscribe = onSnapshot(jogoDoc, (docSnap) => {
+                if (docSnap.exists()) {
+                    setJogo(docSnap.data() as Jogo);
+                } else {
+                    console.error('Nenhum jogo encontrado com o ID:', id);
                 }
-            }
-        };
+            });
 
-        fetchJogo();
+            // Cleanup: remove o listener quando o componente for desmontado
+            return () => unsubscribe();
+        }
     }, [id]);
 
     if (!jogo) {
@@ -61,7 +58,7 @@ const JogoDetalhes = () => {
                         <h3>Jogo já comprado!</h3>
                     </div>
                 ) : (
-                    <TicketPix valor={jogo.valor} />
+                    <TicketPix valor={jogo.valor} jogoId={id || ''} />
                 )}
             </div>
     </div>
