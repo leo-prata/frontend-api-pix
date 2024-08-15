@@ -25,4 +25,4 @@ dist-ssr
 
 .env
 
-src/services/firebase.ts
+

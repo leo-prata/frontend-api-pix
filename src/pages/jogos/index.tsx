@@ -42,22 +42,6 @@ const Jogos = () => {
     }, []);
 
     return (
-        /*
-        <div className={styles.jogosContainer}>
-        {jogos.map((jogo) => (
-            <Link key={jogo.id} to={`/jogo/${jogo.id}`} className={styles.jogo}>
-                <div 
-                    className={`${styles.statusIndicator} ${jogo.estaPago ? styles.pago : styles.pendente}`}
-                />
-                <div className={styles.jogoInfo}>
-                    <p className={styles.nome}>{jogo.nome}</p>
-                    <p className={styles.data}>{jogo.data}</p>
-                </div>
-            </Link>
-        ))}
-    </div>
-    */
-
     <div className={styles.jogosContainer}>
     {jogos.map((jogo) => (
         <Link key={jogo.id} to={`/jogo/${jogo.id}`} className={styles.jogo}>
