@@ -107,25 +107,27 @@ const TicketPix: React.FC<TicketPixProps> = ({valor, jogoId}) => {
 
     return (
         <div className={styles.container}>
-        {paymentStatus !== 'approved' && (
-            <div className={styles.card}>
-                <h2 className={styles.title}>Pagamento via Pix</h2>
-                <form className={styles.form} onSubmit={handleSubmit}>
-                    <Input
-                        placeholder="Email"
-                        type="text"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <Input
-                        placeholder="CPF"
-                        type="text"
-                        value={cpf}
-                        onChange={(e) => setCpf(e.target.value)}
-                    />
-                    <Button type="submit">Pagar</Button>
-                </form>
-                {qrCodeBase64 && (
+            {paymentStatus !== 'approved' && !qrCodeBase64 ? (
+                <div className={styles.card}>
+                    <h2 className={styles.title}>Pagamento via Pix</h2>
+                    <form className={styles.form} onSubmit={handleSubmit}>
+                        <Input
+                            placeholder="Email"
+                            type="text"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                        <Input
+                            placeholder="CPF"
+                            type="text"
+                            value={cpf}
+                            onChange={(e) => setCpf(e.target.value)}
+                        />
+                        <Button type="submit">Pagar</Button>
+                    </form>
+                </div>
+            ) : (
+                qrCodeBase64 && (
                     <div className={styles.qrCodeContainer}>
                         <h3>Pague com o QRCode abaixo ou com o código:</h3>
                         <img 
@@ -133,14 +135,15 @@ const TicketPix: React.FC<TicketPixProps> = ({valor, jogoId}) => {
                             alt="QR Code for Pix Payment" 
                             className={styles.qrCodeImage}
                         />
-                        <div className={styles.texto}>{codigoPix}</div>
-                        <button className={styles.copyButton} onClick={handleCopy}>Copiar</button>
+                        <div className={styles.textoContainer}>
+                            <div className={styles.texto}>{codigoPix}</div>
+                            <button className={styles.copyButton} onClick={handleCopy}>Copiar</button>
+                        </div>
                         <p>Aguardando pagamento...</p>
                     </div>
-                )}
-            </div>
-        )}
-    </div>
+                )
+            )}
+        </div>
     )
 }
 

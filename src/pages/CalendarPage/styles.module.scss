@@ -1,0 +1,92 @@
+@import 'react-calendar/dist/Calendar.css'; // Importa o CSS do react-calendar
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+  }
+  
+  .calendar {
+    width: 100%;
+    max-width: 500px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+  }
+  
+  .react-calendar__tile {
+    border: 1px solid #ddd; // Borda fina para cada dia
+    border-radius: 4px;
+    margin: 2px;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .react-calendar__tile--now {
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+  }
+  
+  .react-calendar__tile--active {
+    background: #6fbc6b;
+    color: white;
+    border: 1px solid #6fbc6b;
+  }
+  
+  .react-calendar__tile--hover {
+    background: #e6e6e6;
+  }
+  
+  .jogoMarcado {
+    background-color: #ff9a27 !important;
+    border: 1px solid #444444 !important;
+    border-radius: 4px !important;
+  }
+  
+  .jogosContainer {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 450px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    background: #f9f9f9;
+  }
+  
+  .jogosList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .jogoItem {
+    margin-bottom: 10px;
+  }
+  
+  .jogo {
+    text-decoration: none;
+    color: #000000;
+    //font-weight: bold;
+  }
+  
+  .jogo:hover {
+    font-weight: bold;
+  }
+
+  .titulo {
+    text-align: center;
+  }
+
+  span{
+    color: #fa6400;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  abbr{
+    font-size: 18px;
+    text-decoration: none;
+  }
+
+  

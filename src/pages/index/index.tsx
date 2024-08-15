@@ -4,6 +4,8 @@ import Header from '../../components/Header';
 
 import Jogos from '../jogos';
 
+import CalendarPage from '../CalendarPage';
+
 const PaginaInicial = () => {
     return (
         <div className={styles.container}>
@@ -17,7 +19,8 @@ const PaginaInicial = () => {
                 <Jogos />   
             </div>
             <div className={styles.card}>
-                <h2 className={styles.title}>Calendário</h2>   
+                <h2 className={styles.title}>Calendário</h2>
+                <CalendarPage />   
             </div>
         </div>
     );
