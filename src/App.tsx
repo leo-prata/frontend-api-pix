@@ -11,7 +11,7 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path="/pagamento" element={<TicketPix />} />
+          <Route path="/pagamento" element={<TicketPix valor={0} jogoId={''} />} />
           <Route path="/" element={<PaginaInicial />} />
           <Route path="/jogo/:id" element={<JogoDetalhes />} />
         </Routes>
