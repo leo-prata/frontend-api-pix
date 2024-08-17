@@ -11,6 +11,8 @@ import { setUpAPI } from '../../services/api';
 import { db } from '../../services/firebase';
 import { doc, updateDoc } from 'firebase/firestore';
 
+import { initMercadoPago } from '@mercadopago/sdk-react';
+
 interface TicketPixProps {
     valor: number;
     jogoId: string;
@@ -73,6 +75,7 @@ const TicketPix: React.FC<TicketPixProps> = ({valor, jogoId}) => {
         }
 
         const api = setUpAPI();
+        initMercadoPago(import.meta.env.VITE_MERCADOPAGO_TOKEN);
         const response = await api.post('/create-pix', {
             transaction_amount: valor,
             description: "payment",
