@@ -1,40 +1,38 @@
 
-
 .card {
-    min-width: 450px;
+    max-width: 450px;
     width: 100%;
     max-width: 600px;
-    min-height: 550px;
-    margin: 20px auto; // Centraliza o card horizontalmente
-    padding: 15px; // Aumenta o padding para um layout mais espaçoso
-    background-color: #fff; // Cor de fundo do card
-    border-radius: 12px; // Borda mais arredondada
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); // Sombra mais pronunciada
+    margin: 20px auto; 
+    padding: 15px; 
+    background-color: #fff; 
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); 
     display: flex;
     flex-direction: column;
-    color: #333; // Cor do texto
+    color: #333; 
 }
 
 .title {
-    font-size: 28px; // Aumenta o tamanho do título
+    font-size: 28px; 
     font-weight: bold;
-    margin-bottom: 20px; // Aumenta o espaçamento abaixo do título
-    border-bottom: 2px solid #ddd; // Adiciona uma linha abaixo do título
-    padding-bottom: 10px; // Adiciona padding abaixo do título
+    margin-bottom: 20px; 
+    border-bottom: 2px solid #ddd; 
+    padding-bottom: 10px; 
 }
 
 .card p {
-    font-size: 18px; // Tamanho do texto dos detalhes
-    margin-bottom: 10px; // Espaçamento entre parágrafos
+    font-size: 18px; 
+    margin-bottom: 10px; 
 }
 
 .message {
     margin-top: 20px;
-    padding: 15px; // Aumenta o padding para maior espaçamento
-    background-color: #e0ffe0; // Cor de fundo para a mensagem de sucesso
-    border: 1px solid #b2ffb2; // Borda para a mensagem de sucesso
-    border-radius: 6px; // Borda mais arredondada
+    padding: 15px; 
+    background-color: #e0ffe0; 
+    border: 1px solid #b2ffb2; 
+    border-radius: 6px; 
     text-align: center;
     font-weight: bold;
-    color: #2f9e2f; // Cor do texto da mensagem
+    color: #2f9e2f; 
 }

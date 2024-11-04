@@ -10,37 +10,54 @@ body {
 
 .container {
     width: 100%;
-    min-width: 450px; 
+    max-width: 450px; 
     background-color: #ffffff; 
     border-radius: 8px;
-    //box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 3px;
+    padding: 5px;
     margin: 20px;
 }
 
 .card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
-    min-width: 450px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 20px;
 }
 
 .title {
     font-size: 24px;
     color: #333;
+    text-align: center;
 }
 
 .header {
     width: 100%;
-    background-color: #353535; /* Cor de fundo do header */
+    background-color: #353535; 
     color: white;
     padding: 20px;
     text-align: center;
-    border-radius: 8px 8px 0 0; /* Bordas arredondadas no topo */
+    border-radius: 8px 8px 0 0; 
+}
+
+
+@media (max-width: 450px) {
+    .container {
+        max-width: 100%; 
+        margin: 0;
+        padding: 2px; 
+    }
+
+    .card {
+        box-shadow: none;
+        border-radius: 0; 
+    }
+
+    .header {
+        border-radius: 0; 
+    }
 }
